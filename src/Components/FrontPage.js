@@ -5,34 +5,10 @@ import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import Logo from '../logo.svg';
 import Teamwork from '../Union.svg'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import About from './About';
-import Notes from './Notes'
-import CSCluster from './CSCluster'
-import ECCluster from './ECCluster'
-import MECluster from './MECluster'
+
 
 function FrontPage() {
-  // const [HomeLink, setHomeLink] = useState(0);
-  // const [AboutLink, setAboutLink] = useState(0);
- 
-  
-  // const GotoHome = () => {
-  //   setHomeLink(1);
-  //   setAboutLink(0);
-  //   setNotesLink(0);
-  // };
-  // const GotoAbout = () => {
-  //   setHomeLink(0);
-  //   setAboutLink(1);
-  //   setNotesLink(0);
-  // };
 
-  // const GotoNotes = () => {
-  //   setHomeLink(0);
-  //   setAboutLink(0);
-  //   setNotesLink(true)
-  //   setBackToHome(false)
-  // };
 
   const images = [
     '/images/firsthome.svg',
@@ -99,47 +75,6 @@ function FrontPage() {
 
 
 
-  // const GoToCSCluster = () =>{
-
-  //   setNotesLink(true)
-  //   setBackToHome(false)
-  //   setCSECluster(true)
-  //   setECECluster(false)
-  //   setMECluster(false)
-
-  // }
-
-  
-  // const GoToECCluster = () =>{
-
-  //   setNotesLink(true)
-  //   setBackToHome(false)
-  //   setCSECluster(false)
-  //   setECECluster(true)
-  //   setMECluster(false)
-    
-  // }
-
-  
-  // const GoToMECluster = () =>{
-
-  //   setNotesLink(true)
-  //   setBackToHome(false)
-  //   setCSECluster(false)
-  //   setECECluster(false)
-  //   setMECluster(true)
-    
-  // }
-
-  // const GoToNotes = () =>{
-
-  //   setNotesLink(true)
-  //   setCSECluster(false)
-  //   setECECluster(false)
-  //   setMECluster(false)
-
-  // }
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -148,7 +83,7 @@ function FrontPage() {
 
 
   return (
-<Router>
+
     <div className='bg-zinc-950 min-h-screen flex flex-col items-center'>
   {/* Navbar */}
   <div className='w-full flex justify-between items-center px-4 md:px-20 py-6 mt-4'>
@@ -268,15 +203,7 @@ function FrontPage() {
       </div>
 </div>
 
-        <Routes>
-          <Route path='/about' element={<About/>} />
-          <Route path='/CSCluster' element={<CSCluster/>} />
-          <Route path='/ECCluster' element={<ECCluster/>} />
-          <Route path='/MECluster' element={<MECluster/>} />
-          <Route path='/Notes' element={<Notes/>} />
-
-        </Routes> 
-</Router>
+      
   );
 }
 

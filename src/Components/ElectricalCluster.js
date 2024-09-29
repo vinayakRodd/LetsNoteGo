@@ -4,8 +4,9 @@ import axios from 'axios'
 import 'bootstrap-icons/font/bootstrap-icons.min.css'
 import _ from 'lodash';
 import Logo from '../logo.svg';
+import { Link } from 'react-router-dom';
 
-function ElectricalCluster({CSECluster,ECECluster,MECluster,setCSECluster,setECECluster,setMECluster,setNotesLink,setBackToHome}) {
+function ElectricalCluster() {
   const [PhysicsCycle,setPhysicsCycle] = useState(false)
   const [ChemistryCycle,setChemistryCycle] = useState(false)
   const [ECERelatedPdf,setECERelatedPdf] = useState([])
@@ -186,48 +187,25 @@ const RotateOnClick = () =>{
 }
 
 
-
-useEffect(()=>{
-
-
-
-},[ECERelatedPdf])
-
-const BackHome = () =>{
-
-
-    setNotesLink(false)
-    setBackToHome(true)
-    setCSECluster(false)
-}
-
-const BackToNotes = () =>{
-
-  setNotesLink(true)
-  setCSECluster(false)
-  setMECluster(false)
-  setECECluster(false)
-}
-
   return (
     <div className='bg-black min-h-screen gap-[20px] flex flex-col  '>
 <div className='flex flex-col lg:flex-row gap-8 mx-auto max-w-screen-lg'>
-    <img
+    <Link><img
         src={Logo}
         alt="Logo"
-        onClick={BackHome}
+        to='/'
         className='h-10 mx-4 my-4 cursor-pointer'
-    />
+    /></Link>
 
-<div
-        onClick={BackToNotes}
+<Link
+        to='/notes'
         className='h-12 cursor-pointer relative w-full max-w-xs bg-[#20C030] rounded-full flex   mx-1 my-4'
     >
         <div className="text-white text-xl font-medium mx-9 my-2 ">BackToNotes</div>
         <div className="bg-[#20C030] w-16 h-12 rounded-3xl absolute right-0  flex items-center justify-center">
             <i className="bi bi-caret-left-fill text-white text-lg mx-2"></i>
         </div>
-    </div>
+    </Link>
 </div>
 
 <div className='flex flex-col'>

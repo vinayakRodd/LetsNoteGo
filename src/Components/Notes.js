@@ -2,33 +2,11 @@ import axios from 'axios';
 import 'bootstrap-icons/font/bootstrap-icons.min.css';
 import _ from 'lodash';
 import React, { useRef, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Logo from '../logo.svg';
 
-function Notes({setCSECluster,setECECluster,setMECluster,setNotesLink,setBackToHome,NotesLink}) {
 
-    const BackHome = () =>{
-        setBackToHome(true)
-        setNotesLink(false)
-    }
-
-    const GotoCSCluster=()=>{
-        setCSECluster(true)
-        setMECluster(false)
-        setECECluster(false)
-    }
-
-    const GotoECECluster=()=>{
-        setCSECluster(false)
-        setMECluster(false)
-        setECECluster(true)
-    }
-
-    const GotoMECluster=()=>{
-        setCSECluster(false)
-        setMECluster(true)
-        setECECluster(false)
-    }
-
+function Notes() {
 
     var SearchedSubject = useRef(null)
 
@@ -132,17 +110,6 @@ const handleRotatePdf = (subjectNumber) => {
 };
 
 
-
-const GotoHome = () =>{
-
-  setNotesLink(false)
-  setCSECluster(false)
-  setECECluster(false)
-  setMECluster(false)
-  setBackToHome(true)
-
-}
-
 const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 const toggleMenu = () => {
@@ -152,8 +119,8 @@ const toggleMenu = () => {
 
   return (
 
+  
     <div className='flex flex-col min-h-screen bg-white gap-[25px]'>
-
        {/* Navbar */}
        <div className='bg-black w-full flex justify-between items-center px-4 md:px-20 py-6 '>
         <div className='flex items-center'>
@@ -169,12 +136,12 @@ const toggleMenu = () => {
 
         {/* Links for larger screens & dropdown for smaller screens and iPads */}
         <div className={`flex-col lg:flex-row lg:flex ${isMenuOpen ? 'flex' : 'hidden'} lg:gap-10 gap-5 lg:static absolute bg-zinc-950 w-full lg:w-auto top-[70px] left-0 px-4 lg:px-0 py-5 lg:py-0`}>
-          <div
-            onClick={GotoHome}
+          <Link
+            to='/'
             className={`cursor-pointer text-white text-lg md:text-2xl hover:text-green-400`}
           >
             Home
-          </div>
+          </Link>
          
          
         </div>
@@ -203,8 +170,8 @@ const toggleMenu = () => {
       {SearchedRelatedPdf.length === 0 ? (
   <div className="flex flex-wrap justify-center gap-10 mt-10">
     {/* CS Cluster Card */}
-    <div
-      onClick={GotoCSCluster}
+    <Link
+      to='/CSCluster'
       className="flex flex-col gap-2 cursor-pointer bg-black rounded-3xl h-[300px] w-80 sm:w-[250px] md:w-[300px] shadow-lg p-4"
     >
       <h1 className="text-3xl sm:text-4xl text-center text-white mt-2">CS Cluster</h1>
@@ -214,21 +181,21 @@ const toggleMenu = () => {
       <div className="text-center text-lg text-white">CSE (BS)</div>
       <div className="text-center text-lg text-white">AI/ML</div>
       <div className="text-center text-lg text-white">AI/DS</div>
-    </div>
+    </Link>
 
     {/* ECE Cluster Card */}
-    <div
-      onClick={GotoECECluster}
+    <Link
+      to='/ECCluster'
       className="flex flex-col gap-2 cursor-pointer bg-black rounded-3xl h-[300px] w-80 sm:w-[250px] md:w-[300px] shadow-lg p-4"
     >
       <h1 className="text-3xl sm:text-4xl text-center text-white mt-2">EE Cluster</h1>
       <div className="text-center text-lg text-white">ECE</div>
       <div className="text-center text-lg text-white">EEE</div>
-    </div>
+    </Link>
 
     {/* ME Cluster Card */}
-    <div
-      onClick={GotoMECluster}
+    <Link
+      to='/MECluster'
       className="flex flex-col gap-2 cursor-pointer bg-black rounded-3xl h-[300px] w-80 sm:w-[250px] md:w-[300px] shadow-lg p-4"
     >
       <h1 className="text-3xl sm:text-4xl text-center text-white mt-2">Mech. Cluster</h1>
@@ -236,7 +203,7 @@ const toggleMenu = () => {
       <div className="text-center text-lg text-white">ASE</div>
       <div className="text-center text-lg text-white">CHEM</div>
       <div className="text-center text-lg text-white">IME</div>
-    </div>
+    </Link>
   </div>
 ) : (
   <div className="mt-5">
@@ -321,9 +288,13 @@ const toggleMenu = () => {
 
    
         <div className='mb-[100px]' ></div>
-    </div>
-  
 
+     
+    </div>
+
+  
+  
+   
   )
 }
 
